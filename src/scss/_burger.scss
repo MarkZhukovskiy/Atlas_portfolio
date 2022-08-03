@@ -1,0 +1,81 @@
+// Кнопка Burger
+.menu-btn {
+    display: none;
+    position: relative;
+	width: 30px;
+	height: 30px;
+    overflow: hidden;
+    margin-left: 20px;
+    z-index: 6;
+    &:hover {
+        cursor: pointer;
+    }
+    //Позиционируем спаны под иконку бургера
+    span {
+        position: absolute;
+        width: 30px;
+        height: 2px;
+        background-color: #222222;
+        transition: all 0.5s;
+        &:nth-child(2) {
+	        top: calc(50% - 5px);
+        }
+        &:nth-child(3) {
+        	top: calc(50% + 5px);
+        }
+    }
+}
+
+// Контент бургера
+.menu_burger {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+    z-index: 5;
+	padding: 15px;
+    background: $primary;
+	transform: translateX(100%);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .menu_burger_item {
+        margin-bottom: 25px;
+    }
+    .menu_item_burger-link {
+        &:hover {
+            color: $orange;
+        }
+        font-weight: 500;
+        font-size: 22px;
+        color: white;
+        text-transform: uppercase;
+    }
+}
+
+//Анимируем бургер когда инпут чекед
+#burger_button{
+    display: none;
+    &:checked ~ .menu_burger {
+        transform: translateX(0);
+    }
+    &:checked ~ .menu-btn {
+        span {
+            background-color: white;
+        }
+        span:nth-of-type(1) {
+            display: none;
+        }
+        span:nth-of-type(2) {
+            top: 50%;
+            transform: translateY(100%) rotate(45deg);  
+        }
+        span:nth-of-type(3) {
+            top: 50%;
+            transform: translateY(50%) rotate(-45deg); 
+        }
+    }
+}
